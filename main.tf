@@ -74,6 +74,7 @@ resource "aws_lb_listener" "private" {
 
 
 resource "aws_lb_listener" "main" {
+  count             = var.name == "public" ? 1 : 0
   load_balancer_arn = aws_lb.main.arn
   port              = 443
   protocol          = "HTTPS"
